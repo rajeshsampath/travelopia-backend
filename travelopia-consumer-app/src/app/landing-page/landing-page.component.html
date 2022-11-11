@@ -1,0 +1,42 @@
+<form class="flex items-center" [formGroup]="_travelReqForm" (ngSubmit)="onSubmit()">
+    <p>
+    <mat-form-field appearance="fill">
+        <mat-label>Enter your name</mat-label>
+        <input matInput placeholder="pat@example.com" formControlName="name" required>
+      </mat-form-field></p>
+      <p>
+        <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="pat@example.com" formControlName="email" required>
+      </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Select your destination</mat-label>
+            <mat-select formControlName="destination">
+                <mat-option *ngFor="let country of countryList" [value]="country">{{country}}</mat-option>
+            </mat-select>
+            <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+          </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Pax Count</mat-label>
+            <input matInput type="number" formControlName="no_of_pax" placeholder="Ex. 12" min="1" max="10">
+          </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill" floatLabel="always">
+            <mat-label>Budget Per Pax</mat-label>
+            <input matInput type="number" formControlName="budget_per_pax" class="example-right-align" placeholder="0" min="0">
+            <span matPrefix>$&nbsp;</span>
+            <span matSuffix>.00</span>
+          </mat-form-field>
+    </p>
+    <p>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!_travelReqForm.valid">Submit Your Tavel Request</button>
+    </p>
+    <p>
+        <a routerLink="/travel-request-list" routerLinkActive="active" ariaCurrentWhenActive="page">View List Of Travel Request</a>
+    </p>
+</form>
